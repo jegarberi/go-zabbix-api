@@ -1,7 +1,7 @@
 package zabbix_test
 
 import (
-	zapi "github.com/claranet/go-zabbix-api"
+	zapi "github.com/atypon/go-zabbix-api"
 	"testing"
 )
 

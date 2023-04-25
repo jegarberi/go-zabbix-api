@@ -3,7 +3,7 @@ package zabbix_test
 import (
 	"testing"
 
-	zapi "github.com/claranet/go-zabbix-api"
+	zapi "github.com/atypon/go-zabbix-api"
 )
 
 func testCreateItem(t *testing.T) *zapi.Item { //app *zapi.Application

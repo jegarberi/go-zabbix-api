@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	zapi "github.com/claranet/go-zabbix-api"
+	zapi "github.com/atypon/go-zabbix-api"
 )
 
 func testCreateTemplateGroup(t *testing.T) *zapi.TemplateGroup {
