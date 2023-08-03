@@ -1,12 +1,17 @@
 package zabbix
 
+import (
+	"fmt"
+	"strings"
+)
+
 // TriggerPrototype represent Zabbix trigger prototype object
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/triggerprototype/object
 type TriggerPrototype struct {
 	TriggerID          string            `json:"triggerid,omitempty"` // Readonly
-	Description        string            `json:"description"`         // Reqired
+	Description        string            `json:"description"`         // Required
 	Expression         string            `json:"expression"`          // Required
-	Commemts           string            `json:"comments,omitempty"`
+	Comments           string            `json:"comments,omitempty"`
 	Priority           SeverityType      `json:"priority,omitempty,string"`
 	Status             StatusType        `json:"status,omitempty,string"`
 	TemplateID         string            `json:"templateid,omitempty"` // Readonly
@@ -18,6 +23,8 @@ type TriggerPrototype struct {
 	CorrelationTag     string            `json:"correlation_tag,omitempty"`
 	ManualClose        int               `json:"manual_close,omitempty,string"`
 	Dependencies       TriggerPrototypes `json:"dependencies,omitempty"`
+	ExpandExpression   bool              `json:"expandExpression,omitempty"`
+	ExpandDescription  bool              `json:"expandDescription,omitempty"`
 
 	Functions TriggerFunctions `json:"functions,omitempty"`
 	// Return the hosts that the trigger prototype belongs to in the hosts property.
@@ -27,13 +34,43 @@ type TriggerPrototype struct {
 // TriggerPrototypes is an array of TriggerPrototype
 type TriggerPrototypes []TriggerPrototype
 
+func (api *API) patchTriggerExpression(triggers TriggerPrototypes) (res TriggerPrototypes, err error) {
+
+	for id, trigger := range triggers {
+		for _, function := range trigger.Functions {
+			itemid := function.ItemID
+			item, err := api.ItemPrototypeGetByID(itemid)
+			template, err := api.TemplatesGet(Params{
+				"itemids": itemid,
+			})
+
+			replacementString := fmt.Sprintf("%s(/%s/%s)", function.Function, template[0].Host, function.Parameter)
+			replacementString = strings.Replace(replacementString, "$", item.Key, -1)
+
+			triggers[id].Expression = strings.Replace(triggers[id].Expression, "{"+function.FunctionID+"}", replacementString, -1)
+
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+	return triggers, nil
+}
+
 // TriggerPrototypesGet Wrapper for trigger.get
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/triggerprototype/get
 func (api *API) TriggerPrototypesGet(params Params) (res TriggerPrototypes, err error) {
 	if _, present := params["output"]; !present {
 		params["output"] = "extend"
 	}
+
 	err = api.CallWithErrorParse("triggerprototype.get", params, &res)
+
+	// patch Expression
+	res, err = api.patchTriggerExpression(res)
+	if err != nil {
+		return nil, err
+	}
 	return
 }
 
