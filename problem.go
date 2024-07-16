@@ -3,24 +3,23 @@ package zabbix
 // Trigger represent Zabbix trigger object
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/trigger/object
 type ProblemObject struct {
-	EventId string `json:"eventid,omitempty"`
-	//TemplateID   string           `json:"templateid,omitempty"`
-	Source          int64        `json:"source"`
-	Object          int64        `json:"object"`
-	ObjectId        int64        `json:"objectid,omitempty"`
-	Clock           string       `json:"clock,omitempty"`
-	Ns              int64        `json:"ns,omitempty"`
-	RecoveryEventId string       `json:"r_eventid,omitempty"`
-	RecoveryClock   string       `json:"r_clock,omitempty"`
-	RecoveryNs      int64        `json:"r_ns,string"`
-	Correlationid   string       `json:"correlationid,string"`
-	UserId          string       `json:"userid,omitempty"`
-	Name            string       `json:"name,omitempty"`
-	Acknowledged    string       `json:"acknowledged,omitempty"`
-	Severity        SeverityType `json:"severity,omitempty"`
-	Suppressed      int64        `json:"suppressed,omitempty"`
-	OpData          string       `json:"opdata,omitempty"`
-	URLS            []string     `json:"urls,omitempty"`
+	EventId         string   `json:"eventid,omitempty"`
+	Source          int64    `json:"source"`
+	Object          int64    `json:"object"`
+	ObjectId        string   `json:"objectid,omitempty"`
+	Clock           string   `json:"clock,omitempty"`
+	Ns              int64    `json:"ns,omitempty"`
+	RecoveryEventId string   `json:"r_eventid,omitempty"`
+	RecoveryClock   string   `json:"r_clock,omitempty"`
+	RecoveryNs      int64    `json:"r_ns,string"`
+	Correlationid   string   `json:"correlationid,string"`
+	UserId          string   `json:"userid,omitempty"`
+	Name            string   `json:"name,omitempty"`
+	Acknowledged    string   `json:"acknowledged,omitempty"`
+	Severity        string   `json:"severity,omitempty"`
+	Suppressed      string   `json:"suppressed,omitempty"`
+	OpData          string   `json:"opdata,omitempty"`
+	URLS            []string `json:"urls,omitempty"`
 }
 
 // Triggers is an array of Trigger
