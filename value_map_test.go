@@ -1,7 +1,7 @@
 package zabbix_test
 
 import (
-	zapi "github.com/atypon/go-zabbix-api"
+	zapi "github.com/jegarberi/go-zabbix-api"
 	"testing"
 )
 

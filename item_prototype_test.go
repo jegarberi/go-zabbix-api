@@ -3,7 +3,7 @@ package zabbix_test
 import (
 	"testing"
 
-	dd "github.com/atypon/go-zabbix-api"
+	dd "github.com/jegarberi/go-zabbix-api"
 )
 
 func testCreateItemPrototype(template *dd.Template, lldRule *dd.LLDRule, t *testing.T) *dd.ItemPrototype {

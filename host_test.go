@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"testing"
 
-	zapi "github.com/atypon/go-zabbix-api"
+	zapi "github.com/jegarberi/go-zabbix-api"
 )
 
 func testCreateHost(group *zapi.HostGroup, t *testing.T) *zapi.Host {

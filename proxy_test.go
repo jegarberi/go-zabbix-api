@@ -2,7 +2,7 @@ package zabbix_test
 
 import (
 	"encoding/json"
-	zapi "github.com/atypon/go-zabbix-api"
+	zapi "github.com/jegarberi/go-zabbix-api"
 	"log"
 	"testing"
 )

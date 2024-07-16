@@ -5,7 +5,7 @@ package zabbix_test
 //	"fmt"
 //	"testing"
 //
-//	zapi "github.com/atypon/go-zabbix-api"
+//	zapi "github.com/jegarberi/go-zabbix-api"
 //)
 //
 //func testCreateTrigger(item *zapi.Item, host *zapi.Host, t *testing.T) *zapi.Trigger {

@@ -45,7 +45,7 @@ install:
       - zabbix_version: $TEST_ZABBIX_VERSION
   EOF
 - ansible-playbook -c local -i "${TEST_ZABBIX_HOST}," deploy.yml
-- go install github.com/atypon/go-zabbix-api
+- go install github.com/jegarberi/go-zabbix-api
 script:
 - bash -x tests.sh
 notifications:
