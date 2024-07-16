@@ -3,23 +3,23 @@ package zabbix
 // Trigger represent Zabbix trigger object
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/trigger/object
 type ProblemObject struct {
-	EventId         string   `json:"eventid,omitempty"`
-	Source          int64    `json:"source"`
-	Object          int64    `json:"object"`
-	ObjectId        string   `json:"objectid,omitempty"`
-	Clock           string   `json:"clock,omitempty"`
-	Ns              int64    `json:"ns,omitempty"`
-	RecoveryEventId string   `json:"r_eventid,omitempty"`
-	RecoveryClock   string   `json:"r_clock,omitempty"`
-	RecoveryNs      int64    `json:"r_ns,string"`
+	EventId         string   `json:"eventid"`
+	Source          string   `json:"source"`
+	Object          string   `json:"object"`
+	ObjectId        string   `json:"objectid"`
+	Clock           string   `json:"clock"`
+	Ns              string   `json:"ns"`
+	RecoveryEventId string   `json:"r_eventid"`
+	RecoveryClock   string   `json:"r_clock"`
+	RecoveryNs      string   `json:"r_ns,string"`
 	Correlationid   string   `json:"correlationid,string"`
-	UserId          string   `json:"userid,omitempty"`
-	Name            string   `json:"name,omitempty"`
-	Acknowledged    string   `json:"acknowledged,omitempty"`
-	Severity        string   `json:"severity,omitempty"`
-	Suppressed      string   `json:"suppressed,omitempty"`
-	OpData          string   `json:"opdata,omitempty"`
-	URLS            []string `json:"urls,omitempty"`
+	UserId          string   `json:"userid"`
+	Name            string   `json:"name"`
+	Acknowledged    string   `json:"acknowledged"`
+	Severity        string   `json:"severity"`
+	Suppressed      string   `json:"suppressed"`
+	OpData          string   `json:"opdata"`
+	URLS            []string `json:"urls"`
 }
 
 // Triggers is an array of Trigger
